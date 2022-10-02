@@ -58,3 +58,99 @@ int main() {
     return 0;
 }
 ```
+
+```c++
+// Уравнение (bx+c=0)
+#include <iostream>
+using namespace std;
+
+int main() {
+  int b, c;
+  cin >> b >> c;
+  if (b == 0) {
+    cout << "division by zero" << endl;
+    return 0;
+  }
+  
+  int x = -c/b;
+  cout << x;
+  return 0;
+}
+
+```
+
+```c++
+// Квадратное уравнение (ax^2+bx+c=0)
+// 0 5 -5
+#include <iostream>
+#include <math.h>
+using namespace std;
+
+int main() {
+  int a, b, c;
+  cout << "--------- \n";
+  cout << "a = ";
+  cin >> a;
+  cout << "b = ";
+  cin >> b;
+  cout << "c = ";
+  cin >> c;
+  
+  float d = (b*b)-4*a*c; // считаем d
+  
+  if (a == 0) { // если a = 0, то считаем линейное уравнение
+    if (b == 0) {
+    cout << "division by zero" << endl;
+    main();
+    }
+  
+  int x = -c/b;
+  cout << "x = " << x << endl;
+  main();
+  }
+  
+  if (d < 0) { // если d < 0, то корней нет
+    cout << "No solution" << endl;
+    main();
+  }
+  else if (d == 0) { // если d = 0, то корень один
+    cout << "x = " << (-b)/(2*a) << endl;
+    main();
+  }
+  else {
+    cout << "x1 = " << (-b + sqrt(d))/(2*a) << endl;
+    cout << "x2 = " << (-b - sqrt(d))/(2*a) << endl;
+    main();
+  }
+
+  return 0;
+}
+```
+
+```c++
+// Лампа со шторой (светло: день И раздвинуты шторы ИЛИ включена лампа. Светло ли в комнате?)
+#include <iostream>
+using namespace std;
+
+int main() {
+  setlocale(LC_ALL, "Russian"); // вывод русских букв
+  int time, curtains, lamp;
+  cout << "Введите данные: \n";
+  cout << "Про время суток (1 - день, 0 - ночь) \n";
+  cout << "Про шторы (0 - раздвинуты, 1 - закрыты) \n";
+  cout << "И лампу (1 - включена, 0 - выключена) \n";
+  cin >> time >> curtains >> lamp;
+  if (lamp == 1) {
+    cout << "В комнате светло \n";
+  }
+  else if (time == 1 and curtains == 0) {
+    cout << "В комнате светло \n";
+  }
+  else {
+    cout << "В комнате темно \n";
+  }
+
+  return 0;
+}
+
+```
