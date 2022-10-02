@@ -34,7 +34,7 @@ using namespace std;
 
 int main() {
     setlocale(LC_ALL, "Russian"); // вывод русских букв
-    cout << "Дмитрий";
+    cout << "Имя";
     return 0;
 }
 ```
