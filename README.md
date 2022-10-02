@@ -26,10 +26,6 @@ https://github.com/Embarcadero/Dev-Cpp
 
 ---
 
-12 практическая https://mirea.ninja/t/informatika-12-prakticheskaya-ctrl-c/2532
-<br>
-https://yaso.su
-
 ## Домашнее задание 1
 ### 1.1 Имя
 ```c++
