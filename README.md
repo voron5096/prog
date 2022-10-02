@@ -27,3 +27,14 @@ https://github.com/Embarcadero/Dev-Cpp
 
 https://yaso.su/ibvo0503
  
+```c++
+// Имя
+#include <iostream>
+using namespace std;
+
+int main() {
+    setlocale(LC_ALL, "Russian"); // вывод русских букв
+    cout << "Дмитрий";
+    return 0;
+}
+```
