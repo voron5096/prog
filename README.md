@@ -472,7 +472,7 @@ int main() {
   string x;
   int i = 0;
   cout << "----------------------- \n";    
-  getline(cin, x);
+  getline(cin, x); // функция скушает строки с пробелами
   
   
   for (int i = 0; i < x.length() - 1; i++) {
@@ -482,6 +482,6 @@ int main() {
         }
       }
   }
-  cout << x.substr(count(x.begin(), x.end(), ' '), x.length()) << endl;
+  cout << x.substr(count(x.begin(), x.end(), ' '), x.length()) << endl; // конструкция чистит пробелы " "
   main();
 ```
