@@ -4,6 +4,11 @@
 
 [https://lizochekk.jimdofree.com](https://lizochekk.jimdofree.com/%D0%BF%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D0%BC%D0%BC%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5)
 
+https://drive.google.com/drive/folders/1T8KGQzLWOGvZWzi3enRzfc3__xW3sQtq?usp=sharing
+<br>
+https://drive.google.com/drive/folders/1Rh50529LxhNPl_TIQUIOIWV7k5EShAM3
+
+
 ---
 
 ### Компиляторы
@@ -19,13 +24,11 @@ https://github.com/Embarcadero/Dev-Cpp
 - https://github.com/karpelevi4?tab=repositories
 - https://github.com/Bigljuse/UniversityHomeWorkCPP
 
-Макаров Максим Алексеевич
-
 ---
 
 12 практическая https://mirea.ninja/t/informatika-12-prakticheskaya-ctrl-c/2532
-
-https://yaso.su/ibvo0503
+<br>
+https://yaso.su
 
 ## Домашнее задание 1
 ### 1.1 Имя
