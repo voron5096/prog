@@ -157,3 +157,140 @@ int main() {
 }
 
 ```
+## Домашнее задание 2
+
+### 2.1 Конус
+```c++
+#include <iostream>
+#include <math.h>
+using namespace std;
+
+int main() {
+    double R; // нижнее основание
+    double r; // верхнее основание
+    double h;
+    
+    cout << "R = ";
+    cin >> R;
+    cout << "r = ";
+    cin >> r;
+    cout << "h = ";
+    cin >> h;
+    cout << "---------\n";
+    if (R <= 0 or r <= 0 or h <= 0) {
+      cout << "No solution!\n";
+      main();
+    }
+    float l = sqrt(pow(R, 2) + pow(h, 2));
+    float S = M_PI * (pow(R, 2) + (R + r) * l + pow(r, 2));
+    float V = 0.3333333333 * M_PI * h * (pow(R, 2) + R * r + pow(r, 2));
+    cout << "l = " << l << endl;
+    cout << "S = " << S << endl;
+    cout << "V = " << V << endl;
+    return 0;
+}
+// 3 2.5 8.016
+```
+
+### 2.2 Развлетвление
+```c++
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+int main() {
+    double x;
+    double a;
+    double w;
+    cin >> x >> a;
+    if (x == 0) {
+      cout << "x cannot be equal to 0" << endl;
+    }
+    else if (a - pow(x, 2) < 0) { 
+      cout << "You cannot extract the root of a negative number" << endl;
+    }
+    else if (abs(x) < 1) {
+      w = a * log(abs(x));
+      cout << w << endl;
+    }
+    else {
+      w = sqrt(a - pow(x, 2));
+      cout << w << endl;
+    }
+}
+```
+
+### 2.3 Функция
+```c++
+#include <iostream>
+#include <math.h>
+using namespace std;
+
+int main() {
+    double x, y, b, z;
+    
+    cout << "x = ";
+    cin >> x;
+    cout << "y = ";
+    cin >> y;
+    cout << "b = ";
+    cin >> b;
+    
+    if (b - y <= 0 or b - x < 0) {
+        cout << "the coefficient of log() cannot be less than or equal to 0 OR the root cannot be extracted from a negative number";
+    }
+    else {
+    	z = log(b - y) * sqrt(b - x);
+    	cout << "z = " << z;
+	}
+
+    return 0;
+}
+```
+
+### 2.4 Порядок
+```c++
+#include <iostream>
+using namespace std;
+
+
+int main() {
+    int N;
+    
+    cout << "N = "; // ввод переменных
+    cin >> N;
+    
+    if (N <= 0) { // проверка что N натуральное число
+        cout << "N is not natural number";
+        return 0;
+    }
+    
+    for (int i = 0; i < 10; i++) { // вывод 10 натуральных чисел
+        cout << N++ << endl;
+    }
+    
+    return 0;
+}
+```
+
+### 2.5 Табуляция
+```c++
+#include <iostream>
+#include <math.h>
+using namespace std;
+
+int main() {
+    float x, y;
+	for (x = -4; x <= 4; x += 0.5) { // изменение X от -4 до 4 с шагом 0.5
+		y = (x * x - 2 * x + 2) / (x - 1); // функция
+
+		if (x - 1 == 0) { // проверка деления на нуль
+			cout << "y(" << x << ") = " << "division by zero!" << endl;
+		}
+		else {
+			cout << "y(" << x << ") = " << y << endl;
+		}
+	}
+    return 0;
+}
+```
