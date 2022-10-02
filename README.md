@@ -293,3 +293,200 @@ int main() {
     return 0;
 }
 ```
+
+## Домашнее задание 3
+### 3.1 «Заем»
+Месячная выплата m по займу в S рублей на n лет под процент p вычисляется по формуле
+
+![изображение](https://user-images.githubusercontent.com/70198995/193253807-93376b73-5d95-4ee6-8386-9a82694b2de6.png)
+
+```c++
+//////////////////////////////// 3.1. Заём ///////////////////////////
+#include <iostream>
+#include <math.h>
+using namespace std;
+
+int main() {
+double S; 
+double p;
+double n;
+double r;
+double m;
+cout << "----------------------- \n";
+cout << "S = ";
+cin >> S;
+cout << "p = ";
+cin >> p;
+cout << "n = ";
+cin >> n;
+  
+if (S <= 0) {
+  cout << "Numbers cannot be less than zero! \n";
+  main();
+  }
+
+else if (p == 0) {
+  m = S / (12 * n);
+}
+
+else {
+  r = p / 100;
+  m = S * r * pow(1 + r, n) / (12 * (pow(1 + r, n) - 1));
+}
+
+if (12 * (pow(1 + r, n) - 1) < 0) {
+  cout << "You can't divide by 0! \n";
+  main();
+  }
+
+cout << "m = " << m << endl;
+main();
+}
+```
+
+### 3.2 «Ссуда»
+Под какой процент p выдана ссуда величиной S рублей, которая гасится месячными выплатами величиной m в течение n лет. Формула приведена в предыдущей задаче.
+
+```c++
+//////////////////////////////// 3.2. Ссуда ///////////////////////////
+#include <iostream>
+#include <math.h>
+using namespace std;
+
+int main() {
+double S; // начальная ссуда S рублей
+double n; // в течении n лет
+double mTest; // месячная выплата mTest
+double m; // заданная под условие с выплатами r
+double r;
+double rTemp = 0.0001; // временное r для вычисления
+cout << "----------------------- \n";
+cout << "S = ";
+cin >> S;
+cout << "n = ";
+cin >> n;
+cout << "mTest = ";
+cin >> mTest;
+  
+
+if (n == 0 or S <= 0) { // на 0 делить нельзя!
+  cout << "Incorrect years or amount of credit! \n";
+  main();
+  }
+
+while (m < mTest) { ////// находим когда выплаты будут больше заданного, и выводим нужный %
+  r = rTemp;
+  m = S * r * pow(1 + r, n) / (12 * (pow(1 + r, n) - 1)); // подсчёт m с течением времени
+  rTemp = rTemp + 0.0001;
+  }
+
+cout << "p = " << r * 100 << "%" << endl;  
+main();
+}
+```
+
+### 3.3 «Копирование файла»
+Создать на диске текстовый файл и скопировать его на экран.
+
+```c++
+//////////////////////////////// 3.3. Копирование файла ///////////////////////////
+#include <iostream>
+#include <fstream>
+#include <string.h>
+using namespace std;
+
+int main() {
+setlocale(LC_ALL, "rus"); // корректное отображение Кириллицы
+char readline[30]; // буфер промежуточного хранения считываемого из файла текста
+ifstream fin("33.txt"); // открыли файл для чтения
+while (fin.getline(readline, 30)) {
+  for (int i = 0; i < strlen(readline); i++) { // пробегание по кол-ву символов строки
+    cout << readline[i];
+  }
+  cout << "\n"; // перенос на другую строку
+}
+fin.close();
+return 0;
+}
+```
+
+```c++
+    fstream fileStream;
+    fileStream.open("33.txt");
+
+    char readline[30];
+    if (fileStream.fail()) {
+        cout << "file not exist";
+        ofstream fout("33.txt");
+    }
+    else {
+        cout << "nice";
+        ifstream fin("33.txt");
+        while (fin.getline(readline, 30)) {
+          for (int i = 0; i < strlen(readline); i++) {
+            cout << readline[i];
+          }
+          cout << "\n";
+        }
+        fin.close();
+    }
+```
+
+### 3.4 «Фильтр»
+Вывести на экран только числа из созданного Вами на диске текстового файла, содержащего буквы и числа.
+
+```c++
+//////////////////////////////// 3.4. Фильтр ///////////////////////////
+#include <iostream>
+#include <fstream>
+#include <string.h>
+using namespace std;
+
+int main() {
+  setlocale(LC_ALL, "rus"); // корректное отображение Кириллицы
+  char readline[30]; // буфер промежуточного хранения считываемого из файла текста
+  ifstream fin("33.txt"); // открыли файл для чтения
+  while (fin.getline(readline, 30)) {
+    
+    for(int i = 0; i < strlen(readline); i++) {
+      if (isdigit(readline[i]) or readline[i] == '-' or readline[i] == ',' or readline[i] == '.') { // проверка на число
+        cout << readline[i];
+      }
+    }
+    
+    cout << "\n"; // перенос на другую строку
+    
+  }
+  fin.close();
+}
+```
+
+### 3.5 «Сортировка букв»
+Задать строку из 30 букв и расставить их в алфавитном порядке.
+
+```c++
+//////////////////////////////// 3.5. Сортировка букв ///////////////////////////
+#include <iostream>
+#include <fstream>
+#include <string.h>
+#include <algorithm>
+using namespace std;
+
+int main() {
+  setlocale(0, "");
+  string x;
+  int i = 0;
+  cout << "----------------------- \n";    
+  getline(cin, x);
+  
+  
+  for (int i = 0; i < x.length() - 1; i++) {
+    for (int j = i; j < x.length() - 1; j++) { 
+      if (x[i] > x[j + 1]) {
+        swap(x[i], x[j + 1]);
+        }
+      }
+  }
+  cout << x.substr(count(x.begin(), x.end(), ' '), x.length()) << endl;
+  main();
+```
