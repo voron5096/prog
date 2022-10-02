@@ -26,9 +26,9 @@ https://github.com/Embarcadero/Dev-Cpp
 12 практическая https://mirea.ninja/t/informatika-12-prakticheskaya-ctrl-c/2532
 
 https://yaso.su/ibvo0503
- 
+
+### 1.1 Имя
 ```c++
-// Имя
 #include <iostream>
 using namespace std;
 
@@ -38,9 +38,8 @@ int main() {
     return 0;
 }
 ```
-
+### 1.2 Арифметика
 ```c++
-// Арифметика
 #include <iostream>
 using namespace std;
 
@@ -59,8 +58,8 @@ int main() {
 }
 ```
 
+### 1.3 Уравнение
 ```c++
-// Уравнение (bx+c=0)
 #include <iostream>
 using namespace std;
 
@@ -79,9 +78,9 @@ int main() {
 
 ```
 
+### 1.3 Ещё одно уравнение
+
 ```c++
-// Квадратное уравнение (ax^2+bx+c=0)
-// 0 5 -5
 #include <iostream>
 #include <math.h>
 using namespace std;
@@ -127,8 +126,11 @@ int main() {
 }
 ```
 
+### 1.4 Лампа со шторой
+Светло: день И раздвинуты шторы ИЛИ включена лампа
+<br>
+Светло ли в комнате?
 ```c++
-// Лампа со шторой (светло: день И раздвинуты шторы ИЛИ включена лампа. Светло ли в комнате?)
 #include <iostream>
 using namespace std;
 
