@@ -29,6 +29,7 @@ https://github.com/Embarcadero/Dev-Cpp
 - https://github.com/Alunchik
 - https://github.com/Haze272/University-programming
 - https://github.com/karpelevi4?tab=repositories
+- https://github.com/Kreckeroff/1sem_PP
 - https://github.com/Bigljuse/UniversityHomeWorkCPP
 
 ---
