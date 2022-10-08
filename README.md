@@ -27,6 +27,7 @@ https://github.com/Embarcadero/Dev-Cpp
 - https://github.com/ViktorVlasov/Homework-Mirea
 - https://github.com/NEK-RA/university-homeworks
 - https://github.com/Alunchik
+- https://github.com/soumirel/RTU_ProceduralProgramming_1stSemester_Task4
 - https://github.com/Haze272/University-programming
 - https://github.com/karpelevi4?tab=repositories
 - https://github.com/Kreckeroff/1sem_PP
