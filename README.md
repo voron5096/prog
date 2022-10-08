@@ -495,3 +495,44 @@ int main() {
   cout << x.substr(count(x.begin(), x.end(), ' '), x.length()) << endl; // конструкция чистит пробелы " "
   main();
 ```
+### 4.1 «Файл»
+Создать файл, записать в него 10 чисел, закрыть, потом вновь открыть файл и найти сумму чисел.
+
+Ввод в консоли!
+
+```c++
+#include <iostream>
+#include <fstream>
+using namespace std;
+
+int main() {
+  int i = 0; // кол-во цифр
+  double sum = 0; // сумма
+  double digital = 0;
+  
+  ofstream file("41.txt");
+  while (i != 10) { // ввод чисел
+  	i += 1;
+  	cout << i << ") ";
+  	if (cin >> digital) { // проверка на число
+  		file << digital << "\n"; // запись в файл
+	  }
+	else {
+		cout << "Incorrect input!" << endl;
+		return 0;
+	}
+  }
+  file.close();
+  
+  ifstream ifile("41.txt");
+  while (i != 20) { // сумма чисел
+  	ifile >> digital; // чтение из файла
+    sum += digital; 
+    i += 1;
+  }
+  ifile.close();
+  
+  cout << "SUM = " << sum << endl;
+  return 0;
+}
+```
