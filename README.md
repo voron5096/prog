@@ -19,6 +19,7 @@ https://github.com/Embarcadero/Dev-Cpp
 ### Огромное спасибо
 - https://github.com/Vedji/Procedural_Programming_HomeWork
 - https://github.com/vbg911/procedural-programming
+- https://github.com/Nick648/C-plus-_Codes
 - https://github.com/MintyRoma/PP_MIREA
 - https://github.com/zubai69
 - https://github.com/micr0chip/CompilerLAB7
