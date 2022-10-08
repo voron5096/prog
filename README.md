@@ -24,6 +24,7 @@ https://github.com/Embarcadero/Dev-Cpp
 - https://github.com/micr0chip/CompilerLAB7
 - https://github.com/Kyinex/Homework
 - https://github.com/NEK-RA/university-homeworks
+- https://github.com/Alunchik
 - https://github.com/karpelevi4?tab=repositories
 - https://github.com/Bigljuse/UniversityHomeWorkCPP
 
