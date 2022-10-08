@@ -21,6 +21,7 @@ https://github.com/Embarcadero/Dev-Cpp
 - https://github.com/vbg911/procedural-programming
 - https://github.com/MintyRoma/PP_MIREA
 - https://github.com/zubai69
+- https://github.com/micr0chip/CompilerLAB7
 - https://github.com/karpelevi4?tab=repositories
 - https://github.com/Bigljuse/UniversityHomeWorkCPP
 
