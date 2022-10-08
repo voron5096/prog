@@ -536,3 +536,42 @@ int main() {
   return 0;
 }
 ```
+### 4.2 «Знак числа»
+Определить знак введенного с клавиатуры числа, использовав подпрограмму-функцию
+<br>
+sign x =
+<br>
+1, x > 0
+<br>
+0, x = 0
+<br>
+-1, x < 0
+
+```c++
+#include <iostream>
+using namespace std;
+
+int sign(float x) {
+    if (x > 0) {
+	  return 1;
+    }
+    else if (x == 0) {
+      return 0;
+    }
+    return -1;
+}
+  
+int main() {
+  double x = 0;
+  cout << "----------------\n";
+  cout << "x = ";
+  if (cin >> x) {
+  	cout << sign(x) << endl;
+ 	main();
+  }
+  else {
+  	cout << "Incorrect input!";
+  	return 0;
+  }
+}
+```
