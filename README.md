@@ -215,12 +215,12 @@ int main() {
     if (x == 0) {
       cout << "x cannot be equal to 0" << endl;
     }
-    else if (a - pow(x, 2) < 0) { 
-      cout << "You cannot extract the root of a negative number" << endl;
-    }
     else if (abs(x) < 1) {
       w = a * log(abs(x));
       cout << w << endl;
+    }
+    else if (a - pow(x, 2) < 0) { 
+      cout << "You cannot extract the root of a negative number" << endl;
     }
     else {
       w = sqrt(a - pow(x, 2));
