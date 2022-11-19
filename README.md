@@ -219,7 +219,7 @@ int main() {
       w = a * log(abs(x));
       cout << w << endl;
     }
-    else if (a - pow(x, 2) < 0) { 
+    else if (a - pow(x, 2) < 0) {  // важно чтобы эта проверка шла перед корнем
       cout << "You cannot extract the root of a negative number" << endl;
     }
     else {
