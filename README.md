@@ -713,6 +713,139 @@ int main()
 }
 ```
 
+### 4.6 «Автоматный распознаватель».
+Декодировать римскую запись числа, состоящего из любого количества знаков. 
+<br>
+Правила: I -> 1, V -> 5, X -> 10, L -> 50, C -> 100, D -> 500, M -> 1000
+<br>
+Значение римской цифры не зависит от позиции, а знак минус - зависит
+
+Проверить существует ли цифра! Важна последовательность цифр, XI = 11 / IX = 9, XV = 15 VX - не существует
+<br>
+Значение римских знаков `switch case`, case - свой символ + сравнение с предыдущим/последующим
+
+Как вариант: https://gist.github.com/vocalinternet/aa2c67d1411b12483977ca3acda6039d
+<br>
+https://www.kalkulaator.ee/ru/konverter-rimskix-i-arabskix-chisel
+<br>
+http://graecolatini.bsu.by/htm-different/num-converter-roman.htm
+
+https://www.google.com/search?q=convert+roman+numeral+to+integer+c%2B%2B
+
+**Сложный вариант**
+```c++
+#include <iostream>
+using namespace std;
+
+
+int funSymbol(char symbol) {
+	switch (symbol) {
+	case 'I': return    1; break;
+	case 'V': return    5; break;
+	case 'X': return   10; break;
+	case 'L': return   50; break;
+	case 'C': return  100; break;
+	case 'D': return  500; break;
+	case 'M': return 1000; break;
+	}
+	return 0;
+}
+
+
+int main()
+{
+	string x = ""; // вводимое число
+	cout << "x = ";
+	cin >> x;
+	
+	for (int i = 0; i < x.size(); i++) // проверка всех line[i] на 0
+		if (funSymbol(x[i]) == 0) {
+			cout << "null";
+			return 1;
+		}
+			
+	int number = 0; // итоговое число-ответ
+	int last = funSymbol(x[0]); // line[i-1] = начальный символ
+	int counter = 1; // счётчик мест числа
+	
+	for (int i = 1; i < x.size(); i++) { // пробегание по всем символам line[i] строки
+		if (counter > 2) {
+			cout << "Incorrect number";
+			return 2;
+		}
+		          
+		int rimLine = funSymbol(x[i]); // символ line[i] в римской записи
+		
+		if (last == rimLine) // если line[i-1] = line[i]
+			counter++;
+	
+		if (last < rimLine) // если меньшая цифра перед большей
+			number -= (last * counter);
+
+		if (last > rimLine) // если большая перед меньшей
+			number += (last * counter);
+			
+		if (last != rimLine) // если line[i-1] не= line[i]
+			counter = 1;
+			
+		last = rimLine; // line[i-1] становится line[i]
+	}
+	
+	if (last == funSymbol(x[x.size() - 1])) {
+		number += funSymbol(x[x.size() - 1]) * counter;
+	}
+	
+	cout << "Number = " << number << endl;
+	return 0;
+}
+```
+
+**Лучший вариант**
+```c++
+#include <iostream>
+using namespace std;
+
+
+int digit(char x) { // римские числа в арабские
+	switch(x) {
+		case 'I': return 1;
+		case 'V': return 5;
+		case 'X': return 10;
+		case 'L': return 50;
+		case 'C': return 100;
+		case 'D': return 500;
+		case 'M': return 1000;
+	}
+	return -1;
+}
+
+
+int convert(string x) {
+	int i;
+	int j = 0;
+	int lenX;
+	int result = 0;
+	lenX = x.length() - 1;
+	
+	for(i = lenX; i >= 0; i--) {
+		if (digit(x[i]) >= j)
+			result += digit(x[i]);
+		else
+			result -= digit(x[i]);
+		j = digit(x[i]);
+	}
+	return result;
+}
+
+int main() {
+  string x;
+  cout << "Number = ";
+  cin >> x;
+  cout << convert(x) << endl;
+  main();
+}
+```
+
 ### 4.7 «Генератор псевдослучайных чисел».
 **Задание сделано слегка неправильно и сложно, надо делать рекурсией!**
 
