@@ -578,3 +578,126 @@ int main() {
   }
 }
 ```
+
+### 4.5 «Синусоида».
+Напечатать график функции у = sin x.
+
+1. Обычные циклы
+2. Windows.h (SetPixel, SetConsoleCursorPosition, CreatePen)
+
+![изображение](https://user-images.githubusercontent.com/70198995/193249135-3cb55092-dcfc-4189-a115-728d0da40ff3.png)
+
+Как вариант: https://gist.github.com/vocalinternet/ae8e39a7dbcf3c79ee784539063a1c1a
+
+```c++
+#include <iostream>
+#include <windows.h>
+#include <cmath>
+using namespace std;
+
+int getSin(double x, int d_y = 25) {
+    return  (int) ((sin(x) * 10) + d_y/2);
+}
+
+void gotoxy(int x, int y) {
+    COORD xy;
+    xy.X = x;
+    xy.Y = y;
+    SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), xy);
+}
+
+
+int main() {
+    for (double x = -10; x < 10; x+=0.1) {
+        int y = getSin(x);
+        if (y <= 1) {
+			continue;	
+		}
+        gotoxy((int) (x * 10), y);
+        cout << '*';
+    }
+    for (int i = 0; i < 120; i++) {
+        gotoxy(i, 0);
+        cout << ' ';
+    }
+    gotoxy(0, 26);
+}
+```
+
+```c++
+#include <cmath>
+#include <iostream>
+#include <string>
+#include <vector>
+using namespace std;
+
+int main()
+{
+  int size = 100; // ширина графика
+  int height = 21; // высота
+
+  vector<string> sinGraph(height, string(size, ' ')); // пустое поле
+  sinGraph[height/2] = string(size, '-'); // ось
+
+  for(int i = 0; i < size; i++) { // точки графика
+    sinGraph[(round(10 * sin(i / 4.5) + 10))][i] = '*'; 
+  }
+  
+  for(auto s: sinGraph) { // напечатать 
+    cout << s << '\n';
+  }
+}
+```
+
+### 4.7 «Генератор псевдослучайных чисел».
+Построить генератор псевдослучайных чисел по рекуррентной формуле:
+s(i+1) = (m*s(i) + b) % c, где m, b, c – целые числа.
+<br>
+I вариант: m = 37, b = 3, c = 64
+<br>
+II вариант: m = 25173, b = 13849, c = 65537
+<br>
+Начальное значение s0=0
+
+2 цикла для разных вариантов!
+
+```c++
+#include <iostream>
+using namespace std;
+
+int main()
+{
+
+	int m1 = 37;
+	int b1 = 3;
+	int c1 = 64;
+	int m2 = 25173;
+	int b2 = 13849;
+	int c2 = 65537;
+	int i; // ввод i
+	int temp_i1 = 0; // временный i
+	int temp_i2 = 0; // временный i
+	cout << "i = ";
+	cin >> i;
+	int s1[i]; // создание ячеек для чисел 1 варианта
+	int s2[i]; // создание ячеек для чисел 2 варианта
+	s1[0] = 0;
+	s2[0] = 0;
+	
+	while (temp_i1 != i + 1) {
+		cout << temp_i1 << ") " << s1[temp_i1] << endl;
+		s1[temp_i1 + 1] = (m1 * s1[temp_i1] + b1) % c1;	
+		temp_i1 += 1;
+	}
+	cout << "--------\n";
+	while (temp_i2 != i + 1) {
+		cout << temp_i2 << ") " << s2[temp_i2] << endl;
+		s2[temp_i2 + 1] = (m2 * s2[temp_i2] + b2) % c2;	
+		temp_i2 += 1;
+	}
+	cout << "--------\n";
+	cout << temp_i1 << ") " << s1[temp_i1] << endl;
+	cout << temp_i2 << ") " << s2[temp_i2] << endl;
+    return 0;
+}
+```
