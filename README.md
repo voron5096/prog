@@ -579,6 +579,131 @@ int main() {
 }
 ```
 
+### 4.3 «Геометрические фигуры»
+Вычислить площади прямоугольника, треугольника, круга, используя подпрограммы-функции.
+
+Функции! Оператор `switch case` чтобы выбрать площадь какой фигуры найти
+
+**Неправильно найдена площадь (надо через 3 стороны + не забыть проверку)**
+
+```c++
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+double a, b, h, r;
+double rect(double a, double b) { // прямоугольник
+	if (a <= 0 || b <= 0) {
+		return -1;
+	}
+	return a * b;
+}
+
+double trin(double a, double h) { // треугольник
+	if (a <= 0 || h <= 0) {
+		return -1;
+	}
+	return 0.5 * a * h;
+}
+
+
+double circle(double r) { // круг
+	if (r <= 0) {
+		return -1;	
+	}
+	return M_PI * pow(r, 2);
+}
+
+int main() {
+	int select;
+	cout << "-----------------------\n";
+	cout << "1 (reactagle) / 2 (trinagle) / 3 (circle): ";
+	cin >> select;
+	switch (select) {
+		case 1: // прямоугольник
+			cout << "a = ";
+			cin >> a;
+			cout << "b = ";
+			cin >> b;
+			cout << "S reactagle = " << rect(a, b) << endl;
+			main();
+		case 2: // треугольник
+			cout << "a = ";
+			cin >> a;
+			cout << "h = ";
+			cin >> h;
+			cout << "S trinagle = " << trin(a, h) << endl;
+			main();
+		case 3: // круг
+			cout << "r = ";
+			cin >> r;
+			cout << "S circle = " <<  circle(r) << endl;
+			main();
+	}
+}
+```
+
+**"Правильный" вариант (для этого предмета)** 
+
+```c++
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+double a, b, c, h, r, p;
+double rect(double a, double b) { // прямоугольник
+	if (a <= 0 or b <= 0) {
+		return -1;
+	}
+	return a * b;
+}
+
+double trin(double a, double b, double c) { // треугольник (по 3 сторонам)
+	if (a <= 0 or b <= 0 or c <= 0 or a + b <= c or a + c <= b or b + c <= a) {
+		return -1;
+	}
+	p = (a + b + c) / 2;
+	return sqrt(p * (p - a) * (p - b) * (p - c) );
+}
+
+
+double circle(double r) { // круг
+	if (r <= 0) {
+		return -1;	
+	}
+	return M_PI * pow(r, 2);
+}
+
+int main() {
+	int select;
+	cout << "-----------------------\n";
+	cout << "1 (reactagle) / 2 (trinagle) / 3 (circle): ";
+	cin >> select;
+	switch (select) {
+		case 1: // прямоугольник
+			cout << "a = ";
+			cin >> a;
+			cout << "b = ";
+			cin >> b;
+			main();
+		case 2: // треугольник
+			cout << "a = ";
+			cin >> a;
+			cout << "b = ";
+			cin >> b;
+			cout << "c = ";
+			cin >> c;
+			cout << "S trinagle = " << trin(a, b, c) << endl;
+			main();
+		case 3: // круг
+			cout << "r = ";
+			cin >> r;
+			cout << "S circle = " <<  circle(r) << endl;
+			main();
+	}
+}
+```
+
 ### 4.4 «Былая слава».
 В 1912 году американский флаг «Былая слава» имел 48 звезд (по одной на
 каждый штат) и 13 полос (по одной на колонию). Напечатать «Былую славу 1912 года».
