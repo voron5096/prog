@@ -606,7 +606,7 @@ int main()
 ```
 
 **Нелучший, но работающий вариант**
-```
+```c++
 #include <iostream>
 using namespace std;
 
