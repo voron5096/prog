@@ -1025,3 +1025,162 @@ int main()
     return 0;
 }
 ```
+
+### 5.1 «Алгоритм Евклида» (слегка кривой вариант)
+Задать 2 числа и найти их наибольший общий делитель 2 способами: делением и вычитанием.
+
+Алгоритм поиска наибольшего общего делителя (НОД) двух чисел в 2 исполнениях (методом вычитания, остатка от деления).
+
+2 целых положительных числа в пределах типа int: 30, 18 / Ответ 6
+
+**Кривой вариант**
+
+```c++
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+
+int NODminus(int a, int b) {
+    if (a == b)
+		return a;
+    if (a > b)
+		return NODminus(a - b, b);
+    if (a < b)
+		return NODminus(a, b - a);
+}
+
+int NODdevision(int a, int b) {
+    if (a > b)
+		return NODdevision(a % b, b);
+    if (a < b)
+		return NODdevision(a, b % a);
+}
+
+int main() {
+    double a, b;
+    cout << "Enter a: ";
+    cin >> a;
+    cout << "Enter b: ";
+    cin >> b;
+    if (a <= 0 or b <= 0) {
+        cout << "Error" << endl;
+    }
+    else {
+	 	cout << "NODminus = " << NODminus(abs(a), abs(b)) << endl;
+    	cout << "NODdevision = " << NODdevision(abs(a), abs(b)) << endl;
+	}
+}
+```
+
+**Более красивый вариант**
+
+```c++
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+
+
+int NODminus(int a, int b) {
+    while (a > 0 and b > 0)
+        if (a > b)
+            a -= b;
+        else
+            b -= a;
+    return a + b;
+}
+
+int NODdevision(int a, int b) {
+    while (a > 0 and b > 0)
+        if (a > b)
+            a %= b;
+        else
+            b %= a;
+    return a + b;
+}
+
+
+int main() {
+    double a, b;
+    cout << "Enter a: ";
+    cin >> a;
+    cout << "Enter b: ";
+    cin >> b;
+    if (a <= 0 or b <= 0) {
+        cout << "Error" << endl;
+    }
+    else {
+	 	cout << "NODminus = " << NODminus(abs(a), abs(b)) << endl;
+    	cout << "NODdevision = " << NODdevision(abs(a), abs(b)) << endl;
+	}
+}
+```
+
+### 5.2 «Решето Эратосфена»
+Найти все простые числа в диапазоне от 2 до введенного вами натурального числа
+
+Ряд простых чисел от 2 до введённого числа: 25 / Ответ 3, 5, 7, 11, 13, 17, 19, 23
+
+```c++
+#include <iostream>
+using namespace std;
+
+int main() {
+    int n; // заданное число
+    cout << "n: ";
+    cin >> n;
+    int arr[n]; // массив
+    for (int i = 0; i <= n; i++) { // счётчик i до n
+    	if (i < 3) // если число < 3
+    		arr[i] = 0; // удаляем число
+    	else
+    		arr[i] = i; // все остальные числа
+	}
+
+    for (int y = 0; y < n; y++) { // счётчик y до n
+		if (arr[y] != 0) // если число не = 0
+			for (int x = y; x < n; x++) // счётчик x до n
+				if (arr[x] % arr[y] == 0 and arr[x] != arr[y]) // если остаток двух чисел = 0 и они не равны
+					arr[x] = 0; // удаляем число
+	} 
+    for (int i = 0; i < n; i++) { // счётчик i до n                                     
+		if (arr[i] != 0) // если число не = 0
+			cout << arr[i] << endl;
+	}
+}
+```
+
+**Более простой вариант**
+
+```c++
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+bool checkSimple(int x) {
+	for (int i = 2; i <= sqrt(x); i++) {
+	    if (x % i == 0) {
+	        return false;
+	    }
+	}
+	return true;
+}
+
+int main() {
+    int n;
+    cout << "n: ";
+    cin >> n;
+    int arr[n];
+
+	for (int i = 0; i < n; i++) {
+	    arr[i] = i;
+	}
+
+    for (int i = 0; i < n; i++) {                                   
+		if (checkSimple(arr[i]) == true)
+			if (arr[i] != 0 and arr[i] != 1)
+				cout << arr[i] << endl;
+	}
+}
+```
