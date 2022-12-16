@@ -1301,6 +1301,8 @@ int main() {
 ```
 
 ### 5.4 «Ряды»
+12. Дано натуральное число n. Вычислить
+
 ```c++
 #include <iostream>
 #include <cmath>
