@@ -1300,6 +1300,130 @@ int main() {
 }
 ```
 
+Гайд по файлам: https://ejudge.179.ru/tasks/cpp/total/161.html
+
+### 5.3 «Обработка текстовых файлов» (2 варианта)
+
+1. Замена пробелов на что-то https://pastebin.com/br3t26b2
+
+
+```c++
+// 15. Поиск определенного слова в текстовом файле
+#include <stdio.h>
+#include <conio.h>
+#include <string>
+#include <iostream>
+#include <fstream>
+using namespace std;
+ 
+int main() {
+    ifstream ifile("53.txt");
+    string word = "";
+    string result = "";
+    char letter = ' ';
+    
+    cout << "Enter a word: ";
+	cin >> word;
+ 
+    while (ifile.peek() >= 0) { // проход до конца файла
+        ifile >> letter;
+		result += letter;
+    }
+    ifile.close();
+
+    int pos = result.find(word, 0);
+    
+    if (pos != -1) {
+		cout << "Position word: " << pos << endl;
+	}
+    else {
+    	cout << "word not found...\n";
+	}
+
+    return 0;
+}
+```
+**Не работает с файлами**
+```c++
+// 5. Поиск в тексте фразы максимальной длины
+#include <iostream>
+using namespace std;
+
+int main() {
+	string str, w, strLen, d = " ";
+	cout << "string: = ";
+	getline(cin, str);
+	int b, e = 0;
+	while ((b = str.find_first_not_of(d, e)) != str.npos) {
+		e = str.find_first_of(d, b);
+		w = str.substr(b, e - b);
+		if (w.size() > strLen.size())
+			strLen = w;
+	}
+	cout << strLen << endl;
+	cout << "-----------------------------------------\n";
+	main();
+}
+```
+
+```c++
+// 5. Поиск в тексте фразы максимальной длины
+#include <iostream>
+#include <fstream>
+using namespace std;
+
+int main() {
+	ifstream ifile("53.txt");
+	string str, w, strLen, d = " ";
+	string letter = "";
+	 while (ifile.peek() >= 0) { // проход до конца файла
+        ifile >> letter;
+		str = str + letter + " ";
+    }
+    ifile.close();
+    
+	int b, e = 0;
+	while ((b = str.find_first_not_of(d, e)) != str.npos) {
+		e = str.find_first_of(d, b);
+		w = str.substr(b, e - b);
+		if (w.size() > strLen.size())
+			strLen = w;
+	}
+	cout << strLen << endl;
+	return 0;
+}
+```
+
+```c++
+// Поиск длины фразы (немного не то задание)
+#include <iostream>
+#include <fstream>
+#include <cstring>
+using namespace std;
+ 
+int main()
+{
+    int max = 0, lenStr, count = 0;
+    string line;
+    ifstream ifile("53.txt");
+    	
+    char str[1024];
+    ifile.getline(str, 1024);
+    
+    for (int i = 0; i < strlen(str); i++) {
+         lenStr = 0;
+         for (int j = i; str[ j ] != ' ' and str[ j ] != '\0'; j++ ) {
+		 	lenStr++;
+         	if (lenStr > max)
+				max = lenStr;         	
+		 }
+    }
+    
+    
+    cout << max << endl;
+}
+```
+
 ### 5.4 «Ряды»
 
 ```c++
@@ -1355,3 +1479,38 @@ int main() {
 	}
 }
 ```
+
+### 5.5 «Файлы»
+```c++
+// 25. Организовать создание текстового файла. Подсчитать в текстовом файле число непустых строк, в которых символы упорядочены по возрастанию.
+#include <iostream>
+#include <fstream>
+#include <string>
+#include <algorithm>
+
+using namespace std;
+
+int main () {
+  string strX = "";
+  
+  ofstream file("55.txt");
+  while (strX != "0") { // ввод чисел
+  	cout << "Input string: ";
+  	getline(cin, strX);
+ 	file << strX << "\n"; // запись в файл
+  }
+  file.close();
+  
+  int k = 0;
+  ifstream ifile("55.txt"); // создать текстовый файл
+  string str;
+  while (getline(ifile, str)) {
+    if (is_sorted(str.begin(), str.end())) k++;
+  }
+  ifile.close();
+  
+  cout << "result: "<< k - 1;
+  return 0;
+}
+```
+
